@@ -1,5 +1,8 @@
 ---
 version: 1
-symbol: BNBETH
+symbol: ORNUSDT
+interval: 1
+order_size_usd: 10
+max_order_count: 2
 api_key: key1
 api_sec: sec1
