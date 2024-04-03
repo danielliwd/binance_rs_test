@@ -85,8 +85,12 @@ fn orderloop(market: &Market, account: &Account, conf: &Config, _opt:&Opt){
 
                     let sell_price = Decimal::from_f64(ask_avg_10 * 1.2).unwrap();
                     let sell_amount = Decimal::from_f64(conf.order_size_usd as f64).unwrap() / sell_price;
-                    let sell_amount_f64 = sell_amount.round_dp(0).to_f64().unwrap();
-                    let sell_price_f64 = sell_price.round_dp(3).to_f64().unwrap();
+                    let price_decimal_place = 3;
+                    let size_decimal_place = 0;
+                    // TODO: add fn format_price_size_by_symbol(symbol, price, size)
+                    // TODO: add fn calc_size_for_symbol_price(symbol, price, size_usd)
+                    let sell_amount_f64 = sell_amount.round_dp(size_decimal_place).to_f64().unwrap();
+                    let sell_price_f64 = sell_price.round_dp(price_decimal_place).to_f64().unwrap();
                     match account.limit_sell(&conf.symbol, sell_amount_f64, sell_price_f64) {
                         Ok(order) => {
                             open_counter+=1;
