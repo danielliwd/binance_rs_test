@@ -1,3 +1,4 @@
+#[allow(unused_imports)]
 use log::{info, error, debug, warn, trace};
 use structopt::StructOpt;
 use serde::{Deserialize, Serialize};
